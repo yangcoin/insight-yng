@@ -3,9 +3,19 @@ var APP_CONFIG = {
     COINNAME: "YANGCOIN",
     SYMBOL: "YNG",
     SYMBOL_M: "mYNG",
-    SYMBOL_BITS: "bits"
+    SYMBOL_BITS: "bits",
+    URL: 'yangcoin',
+    SHOWMONEY: true
 };
-var defaultLanguage = localStorage.getItem('insight-language') || 'en';
+var lang = navigator.languages ?
+    navigator.languages[0] :
+    (navigator.language || navigator.userLanguage);
+if (lang == 'ko_KR')
+    lang = 'ko';
+else
+    lang = 'en';
+console.log(lang);
+var defaultLanguage = localStorage.getItem('insight-language' + APP_CONFIG.SYMBOL) || lang;
 var defaultCurrency = localStorage.getItem('insight-currency' + APP_CONFIG.SYMBOL) || APP_CONFIG.SYMBOL;
 
 angular.module('insight', [
