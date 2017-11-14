@@ -14,7 +14,7 @@ if (lang == 'ko_KR')
     lang = 'ko';
 else
     lang = 'en';
-console.log(lang);
+
 var defaultLanguage = localStorage.getItem('insight-language' + APP_CONFIG.SYMBOL) || lang;
 var defaultCurrency = localStorage.getItem('insight-currency' + APP_CONFIG.SYMBOL) || APP_CONFIG.SYMBOL;
 
