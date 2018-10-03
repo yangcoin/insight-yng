@@ -41,12 +41,17 @@ angular.module('insight')
     };
   })
   .directive('clipCopy', function() {
+    if(ZeroClipboard===undefined) { 
+
+      return {};
+    }
     ZeroClipboard.config({
       moviePath: '/lib/zeroclipboard/ZeroClipboard.swf',
       trustedDomains: ['*'],
       allowScriptAccess: 'always',
       forceHandCursor: true
     });
+    
 
     return {
       restric: 'A',
