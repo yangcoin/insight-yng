@@ -84,10 +84,13 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
 
     pagesTotal = data.pagesTotal;
     pageNum += 1;
-
+    $rootScope.blockReward = 0;
     data.txs.forEach(function(tx) {
       _processTX(tx);
       $scope.txs.push(tx);
+      if(tx.fees < 0) {
+        $rootScope.blockReward = -tx.fees;
+      }
     });
   };
 

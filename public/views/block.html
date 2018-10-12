@@ -58,14 +58,21 @@
             </td>
           </tr>
           <tr>
+              <td><strong>Block Type</strong></td>
+              <td class="text-right text-muted">{{block.nonce > 0 && 'PoW' || 'PoS'}}</td>
+            </tr>
+          <tr>
             <td><strong translate>Block Reward</strong></td>
-            <td class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' BTC'}}</td>
+
+            <td data-ng-show="block.nonce>0" class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' JBCx'}}</td>
+            <td data-ng-show="block.nonce<=0&&blockReward>0" class="text-right text-muted">{{ $root.currency.getConvertion($root.blockReward) || $root.blockReward + ' JBC'}}</td>
           </tr> 
           <tr>
             <td><strong translate>Timestamp</strong></td>
             <td class="text-right text-muted">{{block.time * 1000 | date:'medium'}}</td>
           </tr>
-          <tr data-ng-show="block.poolInfo">
+          <!-- <tr data-ng-show="block.poolInfo"> -->
+              <tr data-ng-show="false">
             <td><strong translate>Mined by</strong></td>
             <td class="text-right text-muted">
               <a href="{{block.poolInfo.url}}" target="_blank" title="{{block.poolInfo.poolName}}">{{block.poolInfo.poolName}}</a>
